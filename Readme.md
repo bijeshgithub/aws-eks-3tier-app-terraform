@@ -7,16 +7,10 @@ Welcome to the official repository for deploying a Three-Tier Todo List Applicat
 📁 Project Structure
 
 3-tier-app-Deployment/
-
 ├── backend/              # Node.js backend code
-
 ├── frontend/             # React frontend code
-
-
 ├── mongo/                # MongoDB Kubernetes manifests
-
 ├── k8s_manifests/        # K8s manifests for frontend, backend, ingress
-
 └── terra-config/         # Terraform files to provision AWS infrastructure
 
 --------------------------------------------------------------------------------------------------
