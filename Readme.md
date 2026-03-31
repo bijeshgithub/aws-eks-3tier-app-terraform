@@ -54,3 +54,17 @@ Make sure you have the following installed and configured:
 
 
 --------------------------------------------------------------------------------------------------
+
+Reality looks like this:
+
+----s3 bucket created, Versioning enabled, security layes AES256 added, dynomodb state lockind setup & files upload ------
+
+bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/bootstarp
+$ aws s3 ls s3://bijesh-s3-bucket
+2026-03-31 17:38:19       3058 Accenture JD.txt
+
+
+
+
+
+
