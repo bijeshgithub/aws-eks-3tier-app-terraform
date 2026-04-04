@@ -1,5 +1,5 @@
 
-# Node group for worker nodes
+# Node group for worker nodes with IAM roles & policy
 
 resource "aws_eks_node_group" "nodes" {
   cluster_name    = aws_eks_cluster.main.name
