@@ -1,1 +1,1 @@
-
+variable "subnet_ids" {}
