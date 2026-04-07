@@ -28,10 +28,11 @@ resource "aws_subnet" "private" {
   cidr_block        = var.private_subnets[count.index]
   availability_zone = var.azs[count.index]
 
-  tags = {
-    Name = "private-${count.index}"
-    "kubernetes.io/cluster/my-eks" = "shared"
-    "kubernetes.io/role/elb"       = "1"
+tags = {
+  Name = "private-${count.index}"
+
+  "kubernetes.io/cluster/my-eks"    = "shared"
+  "kubernetes.io/role/internal-elb" = "1"
   }
   
 }
