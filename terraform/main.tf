@@ -21,3 +21,12 @@ module "rds" {
   subnet_ids = module.vpc.private_subnets
 
 }
+
+module "k8s" {
+  source = "./modules/k8s"
+
+  frontend_image = var.frontend_image
+  backend_image  = var.backend_image
+  db_endpoint    = module.rds.db_endpoint
+}
+
