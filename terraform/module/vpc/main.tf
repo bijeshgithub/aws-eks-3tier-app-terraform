@@ -30,5 +30,8 @@ resource "aws_subnet" "private" {
 
   tags = {
     Name = "private-${count.index}"
+    "kubernetes.io/cluster/my-eks" = "shared"
+    "kubernetes.io/role/elb"       = "1"
   }
+  
 }
