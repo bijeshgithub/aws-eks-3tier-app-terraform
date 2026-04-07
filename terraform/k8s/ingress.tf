@@ -1,60 +1,44 @@
-resource "kubernetes_deployment" "backend" {
+resource "kubernetes_ingress_v1" "app" {
   metadata {
-    name      = "backend"
+    name      = "app-ingress"
     namespace = kubernetes_namespace.app.metadata[0].name
+
+    annotations = {
+      "kubernetes.io/ingress.class"            = "alb"
+      "alb.ingress.kubernetes.io/scheme"       = "internet-facing"
+      "alb.ingress.kubernetes.io/target-type"  = "ip"
+    }
   }
 
   spec {
-    replicas = 2
+    rule {
+      http {
+        path {
+          path = "/api/*"
 
-    selector {
-      match_labels = {
-        app = "backend"
-      }
-    }
-
-    template {
-      metadata {
-        labels = {
-          app = "backend"
-        }
-      }
-
-      spec {
-        container {
-          name  = "backend"
-          image = var.backend_image
-
-          port {
-            container_port = 5000
+          backend {
+            service {
+              name = kubernetes_service.backend.metadata[0].name
+              port {
+                number = 5000
+              }
+            }
           }
+        }
 
-          env {
-            name  = "DB_HOST"
-            value = var.db_endpoint
+        path {
+          path = "/*"
+
+          backend {
+            service {
+              name = kubernetes_service.frontend.metadata[0].name
+              port {
+                number = 80
+              }
+            }
           }
         }
       }
     }
-  }
-}
-
-resource "kubernetes_service" "backend" {
-  metadata {
-    name      = "backend-service"
-    namespace = kubernetes_namespace.app.metadata[0].name
-  }
-
-  spec {
-    selector = {
-      app = "backend"
-    }
-
-    port {
-      port        = 5000
-      target_port = 5000
-    }
-
-    type = "ClusterIP"
   }
 }
