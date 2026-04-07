@@ -70,3 +70,44 @@ $ aws s3 ls s3://bijesh-s3-bucket
 ================================================================================
 
 
+
+===========================================
+
+
+bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/terraform (master)
+$ aws eks --region us-east-1 update-kubeconfig --name my-eks
+Added new context arn:aws:eks:us-east-1:906482382692:cluster/my-eks to C:\Users\bijes\.kube\config
+
+bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/terraform (master)
+$ kubectl get nodes
+NAME                         STATUS   ROLES    AGE   VERSION
+ip-10-0-3-232.ec2.internal   Ready    <none>   34m   v1.35.2-eks-f69f56f
+ip-10-0-4-124.ec2.internal   Ready    <none>   34m   v1.35.2-eks-f69f56f
+
+---------------------------------------------------------------------------------------------
+
+bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/terraform (master)
+$ kubectl get pods -A
+NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE
+kube-system   aws-node-nwlkq             2/2     Running   0          36m
+kube-system   aws-node-qkrnh             2/2     Running   0          36m
+kube-system   coredns-7bc7c74875-9hcx5   1/1     Running   0          38m
+kube-system   coredns-7bc7c74875-v2jq2   1/1     Running   0          38m
+kube-system   kube-proxy-cxsmm           1/1     Running   0          36m
+kube-system   kube-proxy-dbwfv           1/1     Running   0          36m
+
+--------------------------------------------------------------------------------------------
+bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/terraform (master)
+$ kubectl cluster-info
+Kubernetes control plane is running at https://D541C99D8BD79350153260CD045EEAFB.gr7.us-east-1.eks.amazonaws.com
+CoreDNS is running at https://D541C99D8BD79350153260CD045EEAFB.gr7.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
