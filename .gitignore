@@ -2,6 +2,7 @@
 .terraform/
 *.tfstate
 *.tfstate.*
+.terraform.tfvars
 crash.log
 
 # Terraform lock file (optional keep/remove based on team)
