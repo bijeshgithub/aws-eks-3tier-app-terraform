@@ -4,17 +4,19 @@ resource "kubernetes_ingress_v1" "app" {
     namespace = kubernetes_namespace.app.metadata[0].name
 
     annotations = {
-      "kubernetes.io/ingress.class"            = "alb"
-      "alb.ingress.kubernetes.io/scheme"       = "internet-facing"
-      "alb.ingress.kubernetes.io/target-type"  = "ip"
+      "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
+      "alb.ingress.kubernetes.io/target-type" = "ip"
     }
   }
 
   spec {
+    ingress_class_name = "alb"
+
     rule {
       http {
         path {
-          path = "/api/*"
+          path      = "/api"
+          path_type = "Prefix"
 
           backend {
             service {
@@ -27,7 +29,8 @@ resource "kubernetes_ingress_v1" "app" {
         }
 
         path {
-          path = "/*"
+          path      = "/"
+          path_type = "Prefix"
 
           backend {
             service {
