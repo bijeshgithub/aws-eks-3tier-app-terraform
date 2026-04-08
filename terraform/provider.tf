@@ -25,7 +25,7 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-
+-------------------------------------------------------------------------
 # -------------------------
 # EKS Data Sources
 # -------------------------
@@ -33,30 +33,30 @@ provider "aws" {
  # name = module.eks.cluster_name
 #}
 
-data "aws_eks_cluster_auth" "cluster" {
-  name = module.eks.cluster_name
+#data "aws_eks_cluster_auth" "cluster" {
+ # name = module.eks.cluster_name
 }
 
 # -------------------------
 # Kubernetes Provider
 # -------------------------
-provider "kubernetes" {
-  host                   = data.aws_eks_cluster.cluster.endpoint
-  cluster_ca_certificate = base64decode(
-    data.aws_eks_cluster.cluster.certificate_authority[0].data
-  )
-  token = data.aws_eks_cluster_auth.cluster.token
-}
+#provider "kubernetes" {
+  #host                   = data.aws_eks_cluster.cluster.endpoint
+ # cluster_ca_certificate = base64decode(
+   # data.aws_eks_cluster.cluster.certificate_authority[0].data
+  #)
+ # token = data.aws_eks_cluster_auth.cluster.token
+#}
 
 # -------------------------
 # Helm Provider
 # -------------------------
-provider "helm" {
-  kubernetes {
+#provider "helm" {
+  #kubernetes {
    # host                   = data.aws_eks_cluster.cluster.endpoint
-    cluster_ca_certificate = base64decode(
-    #  data.aws_eks_cluster.cluster.certificate_authority[0].data
-    )
-    token = data.aws_eks_cluster_auth.cluster.token
-  }
-}
+   # cluster_ca_certificate = base64decode(
+  #  #  data.aws_eks_cluster.cluster.certificate_authority[0].data
+#    )
+ #   token = data.aws_eks_cluster_auth.cluster.token
+#  }
+#}
