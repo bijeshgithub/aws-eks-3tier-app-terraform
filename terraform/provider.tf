@@ -1,12 +1,13 @@
- terraform {
+terraform {
   required_version = ">= 1.5.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.0"
+    }
 
-   kubernetes = {
+    kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 2.0"
     }
@@ -14,17 +15,20 @@
     helm = {
       source  = "hashicorp/helm"
       version = "~> 2.0"
-    } 
-
     }
   }
-
-# Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1" # Specify your desired AWS region
 }
 
-# EKS Data
+# -------------------------
+# AWS Provider
+# -------------------------
+provider "aws" {
+  region = "us-east-1"
+}
+
+# -------------------------
+# EKS Data Sources
+# -------------------------
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
 }
@@ -33,7 +37,9 @@ data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_name
 }
 
+# -------------------------
 # Kubernetes Provider
+# -------------------------
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(
@@ -42,7 +48,9 @@ provider "kubernetes" {
   token = data.aws_eks_cluster_auth.cluster.token
 }
 
+# -------------------------
 # Helm Provider
+# -------------------------
 provider "helm" {
   kubernetes {
     host                   = data.aws_eks_cluster.cluster.endpoint
@@ -52,5 +60,3 @@ provider "helm" {
     token = data.aws_eks_cluster_auth.cluster.token
   }
 }
-}
-
