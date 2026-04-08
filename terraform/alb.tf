@@ -10,6 +10,17 @@ resource "helm_release" "alb_controller" {
   }
 
   set {
+    name = "region"
+    value = "us-east-1"
+  }
+
+  set {
+    name  = "vpcId"
+    value = "aws_vpc.main.id"
+  }
+  
+
+  set {
     name  = "serviceAccount.create"
     value = "true"
   }
