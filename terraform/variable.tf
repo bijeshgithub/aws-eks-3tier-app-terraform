@@ -7,3 +7,6 @@ variable "db_password" {
   description = "Database password"
   type        = string
 }
+variable "frontend_image" {}
+variable "backend_image" {}
+variable "db_endpoint" {}
