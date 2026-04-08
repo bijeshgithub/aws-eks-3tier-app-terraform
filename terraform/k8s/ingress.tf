@@ -1,7 +1,7 @@
 resource "kubernetes_ingress_v1" "app" {
   metadata {
     name      = "app-ingress"
-    namespace = kubernetes_namespace.app.metadata[0].name
+    namespace = kubernetes_namespace_v1.app.metadata[0].name
 
     annotations = {
       "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
