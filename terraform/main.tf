@@ -34,4 +34,7 @@ module "k8s" {
   db_endpoint    = var.db_endpoint
 }
 
+providers = {
+  kubernetes = kubernetes
+}
 
