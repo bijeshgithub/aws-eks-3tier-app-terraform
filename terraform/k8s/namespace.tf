@@ -1,5 +1,5 @@
-resource "kubernetes_namespace" "app" {
+resource "kubernetes_namespace_v1" "app" {
   metadata {
-    name = "three-tier"
+    name = "app"
   }
 }
