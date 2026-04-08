@@ -32,9 +32,11 @@ module "k8s" {
   frontend_image = var.frontend_image
   backend_image  = var.backend_image
   db_endpoint    = var.db_endpoint
+
+  providers = {
+    kubernetes = kubernetes
+  }
 }
 
-providers = {
-  kubernetes = kubernetes
-}
+
 
