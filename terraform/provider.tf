@@ -19,7 +19,12 @@ terraform {
     }
   }
 
-# EKS Data
+ # Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1" # Specify your desired AWS region
+}
+
+ # EKS Data
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
 }
@@ -48,7 +53,4 @@ provider "helm" {
   }
 }
 }
-# Configure the AWS Provider
-provider "aws" {
-  region = "us-east-1" # Specify your desired AWS region
-}
+
