@@ -19,11 +19,16 @@ resource "helm_release" "alb_controller" {
     value = "aws_vpc.main.id"
   }
   
+  set {
+     name  = "serviceAccount.create"
+     value = "false"
+  }
 
   set {
-    name  = "serviceAccount.create"
-    value = "true"
+     name  = "serviceAccount.name"
+     value = "aws-load-balancer-controller"
   }
+  
 
   depends_on = [module.eks]
 }
