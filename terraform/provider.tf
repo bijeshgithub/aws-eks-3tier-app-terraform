@@ -1,4 +1,4 @@
-terraform {
+ terraform {
   required_version = ">= 1.5.0"
 
   required_providers {
@@ -19,12 +19,12 @@ terraform {
     }
   }
 
- # Configure the AWS Provider
+# Configure the AWS Provider
 provider "aws" {
   region = "us-east-1" # Specify your desired AWS region
 }
 
- # EKS Data
+# EKS Data
 data "aws_eks_cluster" "cluster" {
   name = module.eks.cluster_name
 }
