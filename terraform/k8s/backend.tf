@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "backend" {
   metadata {
     name      = "backend"
-    namespace = kubernetes_namespace.app.metadata[0].name
+    namespace = kubernetes_namespace_v1.app.metadata[0].name
   }
 
   spec {
@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "backend" {
 resource "kubernetes_service" "backend" {
   metadata {
     name      = "backend-service"
-    namespace = kubernetes_namespace.app.metadata[0].name
+    namespace = kubernetes_namespace_v1.app.metadata[0].name
   }
 
   spec {
