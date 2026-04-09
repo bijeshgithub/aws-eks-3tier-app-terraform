@@ -1,2 +1,5 @@
 db_username = "admin"
 db_password = "adminPass123"
+frontend_image = "nginx:latest"
+backend_image  = "nginx:latest"
+db_endpoint    = "dummy"
