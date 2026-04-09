@@ -45,9 +45,9 @@ resource "kubernetes_ingress_v1" "app" {
       }
     }
   }
-}
-lifecycle {
-    ignore_changes = [
+
+   lifecycle {
+     ignore_changes = [
       metadata,
       status
     ]
