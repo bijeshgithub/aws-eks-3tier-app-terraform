@@ -4,6 +4,7 @@ resource "kubernetes_ingress_v1" "app" {
     namespace = kubernetes_namespace_v1.app.metadata[0].name
 
     annotations = {
+      "kubernetes.io/ingress.class"           = "alb"
       "alb.ingress.kubernetes.io/scheme"      = "internet-facing"
       "alb.ingress.kubernetes.io/target-type" = "ip"
     }
