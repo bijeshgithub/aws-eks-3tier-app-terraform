@@ -116,17 +116,29 @@ bijes@Bijesh MINGW64 /d/PROJECTS - CICD/aws-eks-3tier-app-terraform/terraform (m
 $ kubectl get pods -A
 
 NAMESPACE     NAME                                            READY   STATUS    RESTARTS   AGE
+
 app           backend-7575f84f47-27sgt                        1/1     Running   0          62s
+
 app           backend-7575f84f47-nx465                        1/1     Running   0          62s
+
 app           frontend-bd64857cf-9xlk6                        1/1     Running   0          62s
+
 app           frontend-bd64857cf-dccmk                        1/1     Running   0          62s
+
 kube-system   aws-load-balancer-controller-5cb49545f7-lbw7x   1/1     Running   0          12m
+
 kube-system   aws-load-balancer-controller-5cb49545f7-whfcb   1/1     Running   0          12m
+
 kube-system   aws-node-v67z6                                  2/2     Running   0          14m
+
 kube-system   aws-node-zx7bt                                  2/2     Running   0          12m
+
 kube-system   coredns-7bc7c74875-h687h                        1/1     Running   0          8h
+
 kube-system   coredns-7bc7c74875-pnt6s                        1/1     Running   0          8h
+
 kube-system   kube-proxy-89sqf                                1/1     Running   0          12m
+
 kube-system   kube-proxy-d42l4                                1/1     Running   0          14m
 
 
