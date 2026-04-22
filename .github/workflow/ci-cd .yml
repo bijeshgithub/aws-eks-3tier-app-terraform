@@ -79,3 +79,23 @@ jobs:
         terraform apply -auto-approve \
           -var="frontend_image=$ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.FRONTEND_REPO }}:latest" \
           -var="backend_image=$ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.BACKEND_REPO }}:latest"
+
+
+     # 9. Replace your Terraform K8s step with Helm release for app deployments  (Better Deployment - k8s deployments as App deployments happen frequently)   
+#- name: Update kubeconfig
+#  run: |
+ #   aws eks update-kubeconfig \
+  #    --region $AWS_REGION \
+  #    --name my-eks-cluster
+
+#- name: Deploy Frontend
+#  run: |
+ #   helm upgrade --install frontend ./helm/frontend \
+ #     --set image.repository=$ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.FRONTEND_REPO }} \
+  #    --set image.tag=${{ github.sha }}
+
+#- name: Deploy Backend
+#  run: |
+   # helm upgrade --install backend ./helm/backend \
+   #   --set image.repository=$ACCOUNT_ID.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.BACKEND_REPO }} \
+   #   --set image.tag=${{ github.sha }}
